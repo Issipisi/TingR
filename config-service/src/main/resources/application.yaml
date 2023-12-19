@@ -1,0 +1,14 @@
+server:
+ port: 8081
+spring:
+  application:
+    name: config-service
+  cloud:
+    config:
+      server:
+        git:
+          default-label: main
+          uri: https://github.com/Issipisi/TingR
+          search-paths: config-data
+
+

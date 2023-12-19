@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: profesor-service
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/profesor
+    username: postgres
+    password: root
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:8081
+      label: main

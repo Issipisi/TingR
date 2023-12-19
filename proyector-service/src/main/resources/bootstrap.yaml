@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: proyector-service
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:8081/
+      name: proyector-service
+      label: main
+  datasource:
+    url: jdbc:postgresql://localhost:5432/proyector
+    username: postgres
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
