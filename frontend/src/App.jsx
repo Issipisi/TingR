@@ -1,38 +1,36 @@
-import React, { useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Inicio from './components/Inicio';
-import GestionarProfesores from './components/GestionarProfesores';
-import CrearProfesor from './components/CrearProfesor';
-import TablaProyectores from './components/TablaProyectores';
-import OpcionesPrestamo from './components/OpcionesPrestamo';
-import Solicitud from './components/Solicitud';
-import Devolucion from './components/Devolucion';
+import { MantineProvider } from "@mantine/core";
+import "@mantine/core/styles.css";
+import "@mantine/notifications/styles.css";
+import "@mantine/dates/styles.css";
+import Layout from "./layout/Layout";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import InicioPage from "./pages/InicioPage";
+import ProfesoresPage from "./pages/ProfesoresPage";
+import ProyectoresPage from "./pages/ProyectoresPage";
+import PrestamosPage from "./pages/PrestamosPage";
+import { Notifications } from "@mantine/notifications";
+import { ModalsProvider } from "@mantine/modals";
 
-
-function App() {
-
+export default function App() {
   return (
-    <BrowserRouter>
-      <>
-        <Navbar />
-        <div className="container">
-          <Routes>
-            <Route path="/" element={<Inicio />} />
-            <Route path="/inicio" element={<Inicio />} />
-            <Route path="/GestionarProfesores" element={<GestionarProfesores />} />
-            <Route path="/CrearProfesor" element={<CrearProfesor />} />
-            <Route path="/TablaProyectores" element={<TablaProyectores />} />
-            <Route path="/OpcionesPrestamo" element={<OpcionesPrestamo />} />
-            <Route path="/Solicitud" element={<Solicitud />} />
-            <Route path="/Devolucion" element={<Devolucion />} />
-
-            
-          </Routes>
-        </div>
-      </>
-    </BrowserRouter>
+    <MantineProvider
+      theme={{
+        primaryColor: "blue",
+      }}
+    >
+      <Notifications />
+      <ModalsProvider>
+        <BrowserRouter>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<InicioPage />} />
+              <Route path="/profesores" element={<ProfesoresPage />} />
+              <Route path="/proyectores" element={<ProyectoresPage />} />
+              <Route path="/prestamos" element={<PrestamosPage />} />
+            </Routes>
+          </Layout>
+        </BrowserRouter>
+      </ModalsProvider>
+    </MantineProvider>
   );
 }
-
-export default App;
